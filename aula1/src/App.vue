@@ -15,16 +15,16 @@
 import Painel from './components/shared/Painel.vue';
 
 export default {
-  name: 'app',
-  components:{
-      'cmp-painel': Painel
-  },
-  data () {
-    return {
-      titulo: 'Teste Beleza',
-      lista: [ ]
-    }
-  },
+    name: 'app',
+    components:{
+        'cmp-painel': Painel
+    },
+    data () {
+      return {
+        titulo: 'Teste Beleza',
+        lista: [ ]
+      }
+    },
     created(){
       this.$http
       .get('http://localhost:3000/v1/fotos')
