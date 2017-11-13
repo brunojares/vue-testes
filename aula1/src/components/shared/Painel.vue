@@ -5,7 +5,7 @@
         </slot>         
     </div>
 </template>
-<<style>
+<style>
 ul.lista li div.painel{
   text-align: center;
 }
@@ -18,7 +18,7 @@ ul.lista div.painel .titulo{
 }
 </style>
 
-<<script>
+<script>
 export default {
     props: [
         'titulo'
