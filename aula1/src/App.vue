@@ -1,6 +1,7 @@
 <template>
   <div id="app" class="pagina">
     <h1 class="titulo">{{ titulo }}</h1>
+    <input type="search" class="filtro" v-on:input="filtro = $event.target.value" placeholder="Filtro">
     <ul class="lista">
       <li v-for="item of lista">
         <cmp-painel :titulo='item.titulo'>
@@ -22,7 +23,8 @@ export default {
     data () {
       return {
         titulo: 'Teste Beleza',
-        lista: [ ]
+        lista: [ ],
+        filtro: ''
       }
     },
     created(){
@@ -61,5 +63,9 @@ ul.lista li{
 div.painel img.miniatura{
   width: 90%;
   margin: 5% 5%;
+}
+.filtro{
+  width: 100%;
+  display: block;
 }
 </style>
