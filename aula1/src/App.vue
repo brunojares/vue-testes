@@ -1,5 +1,6 @@
 <template>
   <div class="pagina">
+    <router-view></router-view>
   </div>
 </template>
 
