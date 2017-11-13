@@ -3,9 +3,9 @@
     <h1 class="titulo">{{ titulo }}</h1>
     <input type="search" class="filtro" v-on:input="filtro = $event.target.value" placeholder="Filtro">
     <ul class="lista">
-      <li v-for="item of lista">
-        <cmp-painel :titulo='item.titulo'>
-          <img class="miniatura" :src="item.url" :alt="item.titulo"/>
+      <li v-for="itemFoto of fotosComFiltro">
+        <cmp-painel :titulo='itemFoto.titulo'>
+          <img class="miniatura" :src="itemFoto.url" :alt="itemFoto.titulo"/>
         </cmp-painel>         
       </li>
     </ul>
@@ -25,6 +25,15 @@ export default {
         titulo: 'Teste Beleza',
         lista: [ ],
         filtro: ''
+      }
+    },
+    computed:{
+      fotosComFiltro(){
+          if(this.filtro){
+            let _exp = new RegExp(this.filtro.trim(), 'i');
+            return this.lista.filter(f => _exp.test(f.titulo));
+          }else
+              return this.lista;
       }
     },
     created(){
