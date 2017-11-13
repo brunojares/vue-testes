@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="pagina">
     <h1 class="titulo">{{ titulo }}</h1>
-    <input type="search" class="filtro" v-on:input="filtro = $event.target.value" placeholder="Filtro">
+    <input type="search" class="filtro" @input="filtro = $event.target.value" placeholder="Filtro">
     <ul class="lista">
       <li v-for="itemFoto of fotosComFiltro">
         <cmp-painel :titulo='itemFoto.titulo'>
@@ -66,7 +66,7 @@ ul.lista li{
   margin: 5px;
   box-shadow: 5px 5px 10px gray;
   width: 200px;
-  height: 215px;
+  /*height: 215px;*/
   vertical-align: top;
 }
 div.painel img.miniatura{
