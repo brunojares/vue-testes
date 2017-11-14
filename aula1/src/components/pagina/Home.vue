@@ -40,7 +40,9 @@ export default {
     },
     methods:{
         removeItem(foto){
-            alert('Removeu ' + foto.titulo);
+            if(confirm('Confirma remoção?')){
+                alert('Removeu ' + foto.titulo);              
+            }
         }
     },
     created(){
