@@ -1,19 +1,20 @@
 <template>
   <div class="pagina">
-    <nav>
-      <u>
-        <li v-for="rota in rotas">
-            <router-link :to="rota.path != '' ? rota.path : '/'">{{ rota.titulo }}</router-link>
-        </li>
-      </u>
-    </nav>
-    <router-view></router-view>
+    <cmp-menuprincipal :rotas="rotas"/>
+    <transition name="trz-pagina">
+        <router-view></router-view>
+    </transition>    
   </div>
 </template>
 
 <script>
 import Routes from './Routes';
+import Menu from './components/shared/Menu.vue';
+
 export default {
+  components:{
+      'cmp-menuprincipal': Menu
+  },
   data() {
       return {
         rotas: Routes.rotas
@@ -30,4 +31,11 @@ export default {
 .titulo{
   text-align: center;
 }
+.trz-pagina-enter-active, .trz-pagina-leave-active {
+  transition: opacity .5s
+}
+.trz-pagina-enter, .trz-pagina-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0
+}
+
 </style>
