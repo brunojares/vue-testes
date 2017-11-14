@@ -6,7 +6,12 @@
         <li v-for="itemFoto of fotosComFiltro">
             <cmp-painel :titulo='itemFoto.titulo'>
                 <img class="miniatura" :src="itemFoto.url" :alt="itemFoto.titulo"/>
-                <cmp-botao tipo="button" rotulo="Remover" @click.native="removeItem(itemFoto)" />
+                <cmp-botao tipo="button" 
+                    rotulo="Remover" 
+                    :confirma-antes="true"
+                    estilo="perigo"
+                    @quandoClick="removeItem($event, itemFoto)" 
+                />
             </cmp-painel>         
         </li>
         </ul>        
@@ -39,10 +44,9 @@ export default {
       }
     },
     methods:{
-        removeItem(foto){
-            if(confirm('Confirma remoção?')){
-                alert('Removeu ' + foto.titulo);              
-            }
+        removeItem($event, foto){
+            console.log($event);
+            alert('Removeu ' + foto.titulo);              
         }
     },
     created(){
