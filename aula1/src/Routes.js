@@ -3,7 +3,7 @@ import Home from './components/pagina/Home.vue';
 
 export default{
     rotas: [
-        { path: '', component: Home },
-        { path: '/cadastro', component: Cadastro }
+        { path: '', component: Home , titulo: 'Home'},
+        { path: '/cadastro', component: Cadastro, titulo: 'Cadastro' }
       ]
 }
