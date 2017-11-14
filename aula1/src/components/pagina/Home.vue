@@ -5,7 +5,8 @@
         <ul class="lista">
         <li v-for="itemFoto of fotosComFiltro">
             <cmp-painel :titulo='itemFoto.titulo'>
-            <img class="miniatura" :src="itemFoto.url" :alt="itemFoto.titulo"/>
+                <img class="miniatura" :src="itemFoto.url" :alt="itemFoto.titulo"/>
+                <cmp-botao tipo="button" rotulo="Remover" @click.native="removeItem(itemFoto)" />
             </cmp-painel>         
         </li>
         </ul>        
@@ -14,10 +15,12 @@
 
 <script>
 import Painel from '../shared/Painel.vue';
+import Botao from '../shared/Botao.vue';
 
 export default {
     components:{
-        'cmp-painel': Painel
+        'cmp-painel': Painel,
+        'cmp-botao': Botao
     },
     data () {
       return {
@@ -34,6 +37,11 @@ export default {
           }else
               return this.lista;
       }
+    },
+    methods:{
+        removeItem(foto){
+            alert('Removeu ' + foto.titulo);
+        }
     },
     created(){
       this.$http
