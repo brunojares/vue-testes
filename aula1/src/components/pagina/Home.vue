@@ -5,7 +5,11 @@
         <ul class="lista">
         <li v-for="itemFoto of fotosComFiltro">
             <cmp-painel :titulo='itemFoto.titulo'>
-                <img class="miniatura" :src="itemFoto.url" :alt="itemFoto.titulo"/>
+                <img class="miniatura" 
+                    :src="itemFoto.url" 
+                    :alt="itemFoto.titulo"
+                    v-drv-transforma
+                />
                 <cmp-botao tipo="button" 
                     rotulo="Remover" 
                     :confirma-antes="true"

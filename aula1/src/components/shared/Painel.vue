@@ -1,6 +1,6 @@
 <template>
-    <div class="painel" @dblclick="visivel = !visivel">
-        <div class="titulo">{{ titulo }}</div>
+    <div class="painel">
+        <div class="titulo" @dblclick="visivel = !visivel">{{ titulo }}</div>
         <transition name="fade">
         <div class="conteudo" v-show="visivel">
             <slot></slot>         
