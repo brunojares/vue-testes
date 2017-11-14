@@ -3,12 +3,15 @@
 </template>
 <script>
 export default {
-    props:[
-        'rotulo',
-        'tipo',
-        'confirmaAntes',
-        'estilo'
-    ],
+    props:{
+        tipo:{
+            type:String,
+            required: true
+        },
+        rotulo: String,
+        confirmaAntes: Boolean,
+        estilo: String
+    },
     methods:{
         button_click(){
             if(this.confirmaAntes){
