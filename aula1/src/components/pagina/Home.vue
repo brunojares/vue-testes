@@ -8,7 +8,7 @@
                 <img class="miniatura" 
                     :src="itemFoto.url" 
                     :alt="itemFoto.titulo"
-                    v-drv-transforma="{ angulo: 180, intervalo: 2 }"
+                    v-drv-transforma:rotaciona.reverso="{ valor: 180, intervalo: 1.5 }"
                 />
                 <cmp-botao tipo="button" 
                     rotulo="Remover" 
