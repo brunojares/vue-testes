@@ -55,7 +55,8 @@ export default {
                 .delete(`http://localhost:3000/v1/fotos/${foto._id}`)
                 .then(
                     () => { 
-                        this.mensagem = 'Foto removida corretamente' 
+                        this.atualizaListagem();
+                        this.mensagem = 'Foto removida corretamente'; 
                     },
                     erro => {
                         this.mensagem = 'Erro ao remover foto';
@@ -64,17 +65,20 @@ export default {
                 )
            ;           
            console.log($event);
+        },
+        atualizaListagem(){
+            this.$http
+                .get('http://localhost:3000/v1/fotos')
+                .then(
+                    resp => this.lista = resp.body,
+                    erro => console.error('Home. carrega', erro)
+                )
+            ;            
         }
     },
     created(){
-      this.$http
-      .get('http://localhost:3000/v1/fotos')
-      .then(
-          resp => this.lista = resp.body,
-          erro => console.error('Home. carrega', erro)
-      )
-    ;
-  }
+        this.atualizaListagem();
+    }
 }
 </script>
 <style>
