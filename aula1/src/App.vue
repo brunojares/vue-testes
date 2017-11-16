@@ -31,10 +31,17 @@ export default {
 .titulo{
   text-align: center;
 }
+
 .trz-pagina-enter-active, .trz-pagina-leave-active {
-  transition: opacity .5s
+  transition-property: opacity;
+  transition-duration: .25s;
 }
-.trz-pagina-enter, .trz-pagina-leave-to /* .fade-leave-active below version 2.1.8 */ {
+
+.trz-pagina-enter-active {
+  transition-delay: .25s;
+}
+
+.trz-pagina-enter, .trz-pagina-leave-active {
   opacity: 0
 }
 
