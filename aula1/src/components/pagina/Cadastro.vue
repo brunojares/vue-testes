@@ -50,6 +50,7 @@ export default {
     },
     methods:{
         grava(){
+            console.log('chegou no grava');
             this.fotoServico.salva(
                 this.item,
                 () => this.item = new Foto()
@@ -58,6 +59,14 @@ export default {
     },
     created(){
         this.fotoServico = new FotoServico(this.$resource);
+        if(this.$route.params.id){
+            this.fotoServico
+                .porId(
+                    this.$route.params.id,
+                    dados => this.item = dados
+                )
+            ;
+        }
     }
 }
 </script>

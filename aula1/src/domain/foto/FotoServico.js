@@ -18,6 +18,19 @@ export default class FotoServico{
             )
         ;
     }
+    porId(id, carregamento){
+        this._api
+            .get({ id })
+            .then(                
+                resp => carregamento(resp.body),
+                erro => {
+                    if(this._quando_erro)
+                        this.quando_erro(`Erro ao carregar foto ${ id }`, erro);
+                    console.error('FotoServico.lista', erro);
+                }
+            )
+        ;        
+    }
     salva(foto, salvamento){
         this._api
             .save(foto)
@@ -38,7 +51,7 @@ export default class FotoServico{
                 () => delecao(id),
                 erro => {
                     if(this._quando_erro)
-                        this.quando_erro('Erro ao deletar foto', erro);
+                        this.quando_erro(`Erro ao deletar foto ${ id }`, erro);
                     console.error('FotoServico.delecao', erro);
                 }
             )
