@@ -51,8 +51,8 @@ export default {
     },
     methods:{
         removeItem($event, foto){
-           this.$http
-                .delete(`v1/fotos/${foto._id}`)
+           this.api
+                .delete({ id: foto._id})
                 .then(
                     () => { 
                         this.atualizaListagem();
@@ -67,8 +67,8 @@ export default {
            console.log($event);
         },
         atualizaListagem(){
-            this.$http
-                .get('v1/fotos')
+            this.api
+                .query('v1/fotos')
                 .then(
                     resp => this.lista = resp.body,
                     erro => console.error('Home. carrega', erro)
@@ -77,6 +77,7 @@ export default {
         }
     },
     created(){
+        this.api = this.$resource('v1/fotos{/id}');
         this.atualizaListagem();
     }
 }

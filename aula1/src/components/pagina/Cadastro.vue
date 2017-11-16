@@ -49,14 +49,17 @@ export default {
     },
     methods:{
         grava(){
-            this.$http
-                .post('v1/fotos', this.item)
+            this.api
+                .save(this.item)
                 .then(
                     ()=>{ this.item = new Foto() },
                     erro => console.error('Cadastro.grava()', erro)
                 )
             ;
         }
+    },
+    created(){
+        this.api = this.$resource('v1/fotos');
     }
 }
 </script>
