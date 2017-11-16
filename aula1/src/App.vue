@@ -44,5 +44,4 @@ export default {
 .trz-pagina-enter, .trz-pagina-leave-active {
   opacity: 0
 }
-
 </style>
