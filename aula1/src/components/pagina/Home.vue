@@ -1,6 +1,7 @@
 <template>
     <div>
         <h1 class="titulo">{{ titulo }}</h1>
+        <div v-show="mensagem" class="titulo">{{ mensagem }}</div>
         <input type="search" class="filtro" @input="filtro = $event.target.value" placeholder="Filtro">
         <ul class="lista">
         <li v-for="itemFoto of fotosComFiltro">
@@ -35,7 +36,8 @@ export default {
       return {
         titulo: 'Teste Beleza',
         lista: [ ],
-        filtro: ''
+        filtro: '',
+        mensagem: ''
       }
     },
     computed:{
@@ -49,8 +51,19 @@ export default {
     },
     methods:{
         removeItem($event, foto){
-            console.log($event);
-            alert('Removeu ' + foto.titulo);              
+           this.$http
+                .delete(`http://localhost:3000/v1/fotos/${foto._id}`)
+                .then(
+                    () => { 
+                        this.mensagem = 'Foto removida corretamente' 
+                    },
+                    erro => {
+                        this.mensagem = 'Erro ao remover foto';
+                        console.error('Home.removeId()', erro);
+                    }
+                )
+           ;           
+           console.log($event);
         }
     },
     created(){
@@ -58,7 +71,7 @@ export default {
       .get('http://localhost:3000/v1/fotos')
       .then(
           resp => this.lista = resp.body,
-          erro => console.error(erro)
+          erro => console.error('Home. carrega', erro)
       )
     ;
   }
