@@ -36,6 +36,7 @@
 </template>
 <script>
 import Botao from '../shared/Botao.vue';
+import Foto from '../../model/Foto'
 
 export default {
     components:{
@@ -43,21 +44,18 @@ export default {
     },
     data(){
         return {
-            item:{
-                titulo: '',
-                url: '',
-                descricao: ''
-            }
+            item: new Foto()
         };
     },
     methods:{
         grava(){
-            console.log(this.item);
-            this.item = {
-                titulo: '',
-                url: '',
-                descricao: ''
-            };
+            this.$http
+                .post('http://localhost:3000/v1/fotos', this.item)
+                .then(
+                    ()=>{ this.item = new Foto() },
+                    erro => console.error('Cadastro.grava()', erro)
+                )
+            ;
         }
     }
 }
