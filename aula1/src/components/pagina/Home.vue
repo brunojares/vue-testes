@@ -4,7 +4,7 @@
         <div v-show="mensagem" class="titulo">{{ mensagem }}</div>
         <input type="search" class="filtro" @input="filtro = $event.target.value" placeholder="Filtro">
         <ul class="lista">
-        <li v-for="itemFoto of fotosComFiltro">
+        <li v-for="itemFoto in fotosComFiltro">
             <cmp-painel :titulo='itemFoto.titulo'>
                 <img class="miniatura" 
                     :src="itemFoto.url" 
@@ -52,7 +52,7 @@ export default {
     methods:{
         removeItem($event, foto){
            this.$http
-                .delete(`http://localhost:3000/v1/fotos/${foto._id}`)
+                .delete(`v1/fotos/${foto._id}`)
                 .then(
                     () => { 
                         this.atualizaListagem();
@@ -68,7 +68,7 @@ export default {
         },
         atualizaListagem(){
             this.$http
-                .get('http://localhost:3000/v1/fotos')
+                .get('v1/fotos')
                 .then(
                     resp => this.lista = resp.body,
                     erro => console.error('Home. carrega', erro)

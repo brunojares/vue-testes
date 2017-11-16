@@ -50,7 +50,7 @@ export default {
     methods:{
         grava(){
             this.$http
-                .post('http://localhost:3000/v1/fotos', this.item)
+                .post('v1/fotos', this.item)
                 .then(
                     ()=>{ this.item = new Foto() },
                     erro => console.error('Cadastro.grava()', erro)
