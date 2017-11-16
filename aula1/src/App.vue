@@ -17,7 +17,7 @@ export default {
   },
   data() {
       return {
-        rotas: Routes.rotas
+        rotas: Routes.rotas.filter(r => r.titulo)
       };
   }
 }

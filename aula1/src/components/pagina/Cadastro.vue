@@ -29,7 +29,7 @@
             </div>
             <div class="centralizado">
                 <cmp-botao rotulo="Gravar" estilo="perigo" tipo="submit"/>
-                <router-link to="/"><cmp-botao rotulo="Voltar" tipo="button"></cmp-botao></router-link>
+                <router-link :to="{ name: 'home' }"><cmp-botao rotulo="Voltar" tipo="button"></cmp-botao></router-link>
             </div>
         </form>
     </div>
