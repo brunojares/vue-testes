@@ -63,7 +63,7 @@ export default {
             this.fotoServico
                 .porId(
                     this.$route.params.id,
-                    dados => this.item = dados
+                    dados =>{ this.item = dados; } 
                 )
             ;
         }

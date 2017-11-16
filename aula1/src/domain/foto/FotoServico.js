@@ -32,17 +32,20 @@ export default class FotoServico{
         ;        
     }
     salva(foto, salvamento){
-        this._api
-            .save(foto)
-            .then(
-                () => salvamento(),
-                erro => {
-                    if(this._quando_erro)
-                        this.quando_erro('Erro ao salvar foto', erro);                    
-                    console.error('FotoServico.salva', erro);
-                }
-            )
-        ;
+        let _promessa;
+        if(foto._id)
+            _promessa = this._api.update({ id: foto._id }, foto);
+        else
+            _promessa = this._api.save(foto);
+           
+        _promessa.then(
+            () => salvamento(),
+            erro => {
+                if(this._quando_erro)
+                    this.quando_erro('Erro ao salvar foto', erro);                    
+                console.error('FotoServico.salva', erro);
+            }
+        );
     }
     deleta(id, delecao){
         this._api
