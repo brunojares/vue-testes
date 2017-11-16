@@ -33,7 +33,7 @@ export default class FotoServico{
     }
     deleta(id, delecao){
         this._api
-            .delete({ id: id })
+            .delete({ id})
             .then(
                 () => delecao(id),
                 erro => {
