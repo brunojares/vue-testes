@@ -12,7 +12,7 @@ export default class FotoServico{
                 resp => carregamento(resp.body),
                 erro => {
                     if(this._quando_erro)
-                        this.quando_erro('Erro ao carregar fotos', erro);
+                        this._quando_erro('Erro ao carregar fotos', erro);
                     console.error('FotoServico.lista', erro);
                 }
             )
@@ -25,7 +25,7 @@ export default class FotoServico{
                 resp => carregamento(resp.body),
                 erro => {
                     if(this._quando_erro)
-                        this.quando_erro(`Erro ao carregar foto ${ id }`, erro);
+                        this._quando_erro(`Erro ao carregar foto ${ id }`, erro);
                     console.error('FotoServico.lista', erro);
                 }
             )
@@ -42,7 +42,7 @@ export default class FotoServico{
             () => salvamento(),
             erro => {
                 if(this._quando_erro)
-                    this.quando_erro('Erro ao salvar foto', erro);                    
+                    this._quando_erro('Erro ao salvar foto', erro);                    
                 console.error('FotoServico.salva', erro);
             }
         );
@@ -54,7 +54,7 @@ export default class FotoServico{
                 () => delecao(id),
                 erro => {
                     if(this._quando_erro)
-                        this.quando_erro(`Erro ao deletar foto ${ id }`, erro);
+                        this._quando_erro(`Erro ao deletar foto ${ id }`, erro);
                     console.error('FotoServico.delecao', erro);
                 }
             )

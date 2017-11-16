@@ -2,6 +2,7 @@
     <div>
         <h1 class="titulo">Cadastro</h1>        
         <h2 class="titulo">{{ item.titulo }}</h2>
+        <div class="titulo">{{ mensagem }}</div>
         <form @submit.prevent="grava()">
             <div class="controle">
                 <label for="titulo">Titulo</label>                
@@ -45,7 +46,8 @@ export default {
     },
     data(){
         return {
-            item: new Foto()
+            item: new Foto(),
+            mensagem: ''
         };
     },
     methods:{
@@ -53,12 +55,20 @@ export default {
             console.log('chegou no grava');
             this.fotoServico.salva(
                 this.item,
-                () => this.item = new Foto()
+                () => {
+                    if(this.$route.params.id)
+                        this.$router.push({ name: 'home'});
+                    else
+                        this.item = new Foto()
+                }
             );
         }
     },
     created(){
-        this.fotoServico = new FotoServico(this.$resource);
+        this.fotoServico = new FotoServico(
+            this.$resource,
+            (mensagem, erro) => this.mensagem = mensagem
+        );
         if(this.$route.params.id){
             this.fotoServico
                 .porId(

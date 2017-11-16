@@ -66,7 +66,10 @@ export default {
         },
         atualizaListagem(){
             this.fotoServico.lista(
-                dados => { this.lista = dados }
+                dados => { 
+                    this.lista = dados; 
+                    this.mensagem = '';
+                }
             );
         }
     },
