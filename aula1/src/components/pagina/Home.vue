@@ -11,6 +11,9 @@
                     :alt="itemFoto.titulo"
                     v-drv-transforma:rotaciona.reverso="{ valor: 180, intervalo: 1.5 }"
                 />
+                <router-link :to="{ name: 'altera', params: { id: itemFoto._id } }">
+                    <cmp-botao tipo="button" rotulo="Alterar" />                                    
+                </router-link>
                 <cmp-botao tipo="button" 
                     rotulo="Remover" 
                     :confirma-antes="true"
