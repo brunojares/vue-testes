@@ -36,7 +36,8 @@
 </template>
 <script>
 import Botao from '../shared/Botao.vue';
-import Foto from '../../model/Foto'
+import Foto from '../../domain/foto/Foto';
+import FotoServico from '../../domain/foto/FotoServico';
 
 export default {
     components:{
@@ -49,17 +50,14 @@ export default {
     },
     methods:{
         grava(){
-            this.api
-                .save(this.item)
-                .then(
-                    ()=>{ this.item = new Foto() },
-                    erro => console.error('Cadastro.grava()', erro)
-                )
-            ;
+            this.fotoServico.salva(
+                this.item,
+                () => this.item = new Foto()
+            );
         }
     },
     created(){
-        this.api = this.$resource('v1/fotos');
+        this.fotoServico = new FotoServico(this.$resource);
     }
 }
 </script>

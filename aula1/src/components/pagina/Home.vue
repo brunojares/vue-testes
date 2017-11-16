@@ -26,6 +26,7 @@
 <script>
 import Painel from '../shared/Painel.vue';
 import Botao from '../shared/Botao.vue';
+import FotoServico from '../../domain/foto/FotoServico';
 
 export default {
     components:{
@@ -51,33 +52,26 @@ export default {
     },
     methods:{
         removeItem($event, foto){
-           this.api
-                .delete({ id: foto._id})
-                .then(
-                    () => { 
-                        this.atualizaListagem();
-                        this.mensagem = 'Foto removida corretamente'; 
-                    },
-                    erro => {
-                        this.mensagem = 'Erro ao remover foto';
-                        console.error('Home.removeId()', erro);
-                    }
-                )
-           ;           
+            this.fotoServico.deleta(
+                foto._id,
+                () => { 
+                    this.atualizaListagem();
+                    this.mensagem = 'Foto removida corretamente'; 
+                }                    
+            );
            console.log($event);
         },
         atualizaListagem(){
-            this.api
-                .query('v1/fotos')
-                .then(
-                    resp => this.lista = resp.body,
-                    erro => console.error('Home. carrega', erro)
-                )
-            ;            
+            this.fotoServico.lista(
+                dados => { this.lista = dados }
+            );
         }
     },
     created(){
-        this.api = this.$resource('v1/fotos{/id}');
+        this.fotoServico = new FotoServico(
+            this.$resource,
+            (mensagem, erro) => this.mensagem = mensagem
+        );
         this.atualizaListagem();
     }
 }
