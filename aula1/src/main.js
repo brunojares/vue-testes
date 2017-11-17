@@ -2,14 +2,18 @@ import Vue from 'vue';
 import App from './App.vue';
 import VueResource from 'vue-resource';
 import VueRouter from 'vue-router';
-import VeeValidate from 'vee-validate';
+import VeeValidate, { Validator } from 'vee-validate';
+import pt_BR from 'vee-validate/dist/locale/pt_BR'
 
 import Routes from './Routes';
 import './directives/Transform';
 
 Vue.use(VueResource);
 Vue.use(VueRouter);
-Vue.use(VeeValidate);
+Validator.localize('pt_BR', pt_BR);
+Vue.use(VeeValidate, {
+  locale: 'pt_BR'
+});
 
 Vue.http.options.root = 'http://localhost:3000';
 
