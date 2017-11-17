@@ -52,7 +52,6 @@ export default {
     },
     methods:{
         grava(){
-            console.log('chegou no grava');
             this.fotoServico.salva(
                 this.item,
                 () => {
