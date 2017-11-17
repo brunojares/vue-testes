@@ -2,7 +2,7 @@
     <div>
         <h1 class="titulo">Cadastro</h1>        
         <h2 class="titulo">{{ item.titulo }}</h2>
-        <div class="titulo">{{ mensagem }}</div>
+        <div class="titulo erro">{{ mensagem }}</div>
         <form @submit.prevent="grava()">
             <div class="controle">
                 <label for="titulo">Titulo</label>                
@@ -112,10 +112,6 @@ export default {
 img.miniatura{
   width: 200px;
   margin-top: 10px;
-}
-
-.erro{
-    color: red;    
 }
 </style>
 

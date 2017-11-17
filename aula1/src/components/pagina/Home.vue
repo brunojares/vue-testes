@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1 class="titulo">{{ titulo }}</h1>
-        <div v-show="mensagem" class="titulo">{{ mensagem }}</div>
+        <div v-show="mensagem" class="titulo erro">{{ mensagem }}</div>
         <input type="search" class="filtro" @input="filtro = $event.target.value" placeholder="Filtro">
         <ul class="lista">
         <li v-for="itemFoto in fotosComFiltro">
