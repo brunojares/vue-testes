@@ -1,0 +1,5 @@
+* Para installar
+    npm install -g http-server
+
+* Entrar na pasta server de rodar o comando
+    http-server
