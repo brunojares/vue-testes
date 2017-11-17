@@ -2,12 +2,14 @@ import Vue from 'vue';
 import App from './App.vue';
 import VueResource from 'vue-resource';
 import VueRouter from 'vue-router';
+import VeeValidate from 'vee-validate';
 
 import Routes from './Routes';
 import './directives/Transform';
 
 Vue.use(VueResource);
 Vue.use(VueRouter);
+Vue.use(VeeValidate);
 
 Vue.http.options.root = 'http://localhost:3000';
 

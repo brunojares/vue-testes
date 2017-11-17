@@ -7,16 +7,22 @@
             <div class="controle">
                 <label for="titulo">Titulo</label>                
                 <input name="titulo" id="titulo" 
+                    data-vv-as="Título"
                     autocomplete="off"
                     v-model="item.titulo"
+                    v-validate data-vv-rules="required|min:3|max:30"
                 >
+                <span class="erro" v-show="errors.has('titulo')">{{ errors.first('titulo') }}</span>
             </div>            
             <div class="controle">
                 <label for="url">Url</label>
-                <input name="url" id="url" 
+                <input name="url" id="url"
+                    data-vv-as="Url" 
                     autocomplete="off"
                     v-model.lazy="item.url"
+                    v-validate data-vv-rules="required"
                 >
+                <span class="erro" v-show="errors.has('url')">{{ errors.first('url') }}</span>
                 <img class="miniatura" :src="item.url"  :alt="item.titulo" v-show="item.url"/>                
             </div>                        
             <div class="controle">
@@ -52,13 +58,20 @@ export default {
     },
     methods:{
         grava(){
-            this.fotoServico.salva(
-                this.item,
-                () => {
-                    if(this.$route.params.id)
-                        this.$router.push({ name: 'home'});
-                    else
-                        this.item = new Foto()
+            this.$validator.validateAll().then(
+                sucesso =>{
+                    if(sucesso){
+                        this.fotoServico.salva(
+                            this.item,
+                            () => {
+                                if(this.$route.params.id)
+                                    this.$router.push({ name: 'home'});
+                                else
+                                    this.item = new Foto()
+                            }
+                        );                        
+                    }else
+                        this.mensagem = "Verifique os campos com informações inválidas";
                 }
             );
         }
@@ -99,6 +112,10 @@ export default {
 img.miniatura{
   width: 200px;
   margin-top: 10px;
+}
+
+.erro{
+    color: red;    
 }
 </style>
 
