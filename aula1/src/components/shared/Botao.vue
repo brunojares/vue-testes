@@ -34,25 +34,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-    //npm install --save-dev node-sass sass-loader
-    $cor: firebrick;
-
-    .botao{
-        display: inline-block;
-        padding: 10px;
-        border-radius: 3px;
-        margin: 10px;
-        font-size: 1.2em;
-    }
-    .perigo{
-        background: $cor;
-        color: white;
-    }
-    .padrao{
-        background: darkcyan;
-        color: white;
-    }
+    @import './botao.scss';
 </style>
 
 </style>
