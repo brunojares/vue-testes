@@ -5,8 +5,12 @@ import VueRouter from 'vue-router';
 import VeeValidate, { Validator } from 'vee-validate';
 import pt_BR from 'vee-validate/dist/locale/pt_BR'
 
+//{ test: /\.(eot|ttf|woff|woff2)$/, loader: 'file-loader' } 
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap-theme.css';
+
 import Routes from './Routes';
-//import './directives/Transform';
+import './directives/Transform';
 
 Vue.use(VueResource);
 Vue.use(VueRouter);
