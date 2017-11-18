@@ -8,6 +8,8 @@ import pt_BR from 'vee-validate/dist/locale/pt_BR'
 import Routes from './Routes';
 //import './directives/Transform';
 
+
+
 Vue.use(VueResource);
 Vue.use(VueRouter);
 Validator.localize('pt_BR', pt_BR);
