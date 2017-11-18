@@ -33,7 +33,11 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+
+    //npm install --save-dev node-sass sass-loader
+    $cor: firebrick;
+
     .botao{
         display: inline-block;
         padding: 10px;
@@ -42,7 +46,7 @@ export default {
         font-size: 1.2em;
     }
     .perigo{
-        background: firebrick;
+        background: $cor;
         color: white;
     }
     .padrao{
